@@ -1,13 +1,16 @@
 package artere;
 
-import jakarta.enterprise.context.ApplicationScoped;
-
 import jakarta.annotation.PostConstruct;
+import jakarta.annotation.Priority;
+import jakarta.ejb.*;
 import jakarta.inject.Inject;
-import jakarta.inject.Singleton;
+import jakarta.inject.Named;
 
-
+@Named
 @Singleton
+@Priority(100)
+@Startup
+@TransactionManagement(TransactionManagementType.BEAN)
 public class CacheInitializer {
 
     @Inject
@@ -15,6 +18,8 @@ public class CacheInitializer {
 
     @PostConstruct
     public void init() {
+
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         // Créer des objets Person
         Person person1 = new Person();
         person1.setFirstname("Souheib");
@@ -34,9 +39,16 @@ public class CacheInitializer {
         element2.setKey("00002");
         element2.setValue(person2);
         element2.setTtl(180);
+        System.out.println("-----------------------------");
+        System.out.println(person1);
+        System.out.println(person2);
+        System.out.println(element1);
+        System.out.println(element2);
 
-        // Ajouter les éléments au cache
-        cacheService.setCache(element1);
-        cacheService.setCache(element2);
+//         Ajouter les éléments au cache
+
+        CacheStorage.setCache(element1);
+//        cacheService.setCache(element1);
+//        cacheService.setCache(element2);
     }
 }

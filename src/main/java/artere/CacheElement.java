@@ -37,4 +37,14 @@ public class CacheElement {
     public void setExpiryTime(long expiryTime) {
         this.expiryTime = expiryTime;
     }
+
+    @Override
+    public String toString() {
+        return "CacheElement{" +
+                "key='" + key + '\'' +
+                ", value=" + value +
+                ", ttl=" + ttl +
+                ", expiryTime=" + expiryTime +
+                '}';
+    }
 }

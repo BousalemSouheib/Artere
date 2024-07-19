@@ -5,7 +5,7 @@
 
     <groupId>dz.artere</groupId>
     <artifactId>cache-system</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>war</packaging>
     <name>cache-system</name>
 
@@ -58,14 +58,12 @@
     </dependencies>
 
     <build>
+<!--        <finalName>cache-system</finalName>-->
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.1</version>
-                <configuration>
-                    <warName>app</warName>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

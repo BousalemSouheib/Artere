@@ -6,7 +6,7 @@ import javax.ws.rs.core.Application;
 import java.util.Set;
 import java.util.HashSet;
 
-@ApplicationPath("/app")
+@ApplicationPath("/api")
 @ApplicationScoped
 public class JAXRSConfiguration extends Application {
 
