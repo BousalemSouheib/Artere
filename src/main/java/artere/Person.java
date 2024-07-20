@@ -28,4 +28,13 @@ public class Person {
                 ", lastname='" + lastname + '\'' +
                 '}';
     }
+
+    public Person() {
+
+    }
+
+    public Person(String firstname, String lastname) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+    }
 }

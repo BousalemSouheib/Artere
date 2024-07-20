@@ -47,4 +47,20 @@ public class CacheElement {
                 ", expiryTime=" + expiryTime +
                 '}';
     }
+
+    public CacheElement() {
+    }
+
+    public CacheElement(String key, Person value, int ttl) {
+        this.key = key;
+        this.value = value;
+        this.ttl = ttl;
+    }
+
+    public CacheElement(String key, Person value, int ttl, long expiryTime) {
+        this.key = key;
+        this.value = value;
+        this.ttl = ttl;
+        this.expiryTime = expiryTime;
+    }
 }
