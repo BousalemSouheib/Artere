@@ -1,6 +1,6 @@
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import artere.CacheElement;
 import artere.CacheService;
 import artere.Person;
@@ -23,7 +23,7 @@ public class CacheServiceTest {
         element.setTtl(60); // TTL de 60 secondes
 
         Response response = cacheService.setCache(element);
-        Assert.assertEquals(Response.Status.CREATED.getStatusCode(), response.getStatus());
+        Assertions.assertEquals(Response.Status.CREATED.getStatusCode(), response.getStatus());
     }
 
     @Test
@@ -36,7 +36,7 @@ public class CacheServiceTest {
         cacheService.setCache(element);
 
         Response response = cacheService.getCache("testKey");
-        Assert.assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
+        Assertions.assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
     }
 
     @Test
@@ -55,7 +55,7 @@ public class CacheServiceTest {
         }
 
         Response response = cacheService.getCache("testKey");
-        Assert.assertEquals(Response.Status.NOT_FOUND.getStatusCode(), response.getStatus());
+        Assertions.assertEquals(Response.Status.NOT_FOUND.getStatusCode(), response.getStatus());
     }
 
     @Test
@@ -67,9 +67,9 @@ public class CacheServiceTest {
 
         cacheService.setCache(element);
         Response response = cacheService.deleteCache("testKey");
-        Assert.assertEquals(Response.Status.NO_CONTENT.getStatusCode(), response.getStatus());
+        Assertions.assertEquals(Response.Status.NO_CONTENT.getStatusCode(), response.getStatus());
 
         response = cacheService.getCache("testKey");
-        Assert.assertEquals(Response.Status.NOT_FOUND.getStatusCode(), response.getStatus());
+        Assertions.assertEquals(Response.Status.NOT_FOUND.getStatusCode(), response.getStatus());
     }
 }

@@ -1,9 +1,19 @@
 package artere;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class CacheElement {
+
+    @JsonProperty("key")
     private String key;
+
+    @JsonProperty("value")
     private Person value;
+
+    @JsonProperty("ttl")
     private int ttl;// en secondes
+
+    @JsonProperty("expiryTime")
     private long expiryTime;// en millisecondes
 
     public String getKey() {

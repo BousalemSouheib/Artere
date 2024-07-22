@@ -7,12 +7,36 @@ import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.WebTarget;
 import jakarta.ws.rs.core.Response;
 
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+
+import java.security.cert.X509Certificate;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CacheServiceIT {
 
-    private static final String BASE_URI = "http://localhost:8080/app/cache";
-    private final Client client = ClientBuilder.newClient();
+    private static final String BASE_URI = "https://localhost:8080/cache-system/app/cache";
+    private final Client client;
+
+    public CacheServiceIT() throws Exception {
+        TrustManager[] trustAllCerts = new TrustManager[]{
+                new X509TrustManager() {
+                    public X509Certificate[] getAcceptedIssuers() { return null; }
+                    public void checkClientTrusted(X509Certificate[] certs, String authType) { }
+                    public void checkServerTrusted(X509Certificate[] certs, String authType) { }
+                }
+        };
+
+        SSLContext sslContext = SSLContext.getInstance("TLS");
+        sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
+
+        client = ClientBuilder.newBuilder()
+                .sslContext(sslContext)
+                .hostnameVerifier((hostname, session) -> true)
+                .build();
+    }
 
     @Test
     public void testSetCache() {

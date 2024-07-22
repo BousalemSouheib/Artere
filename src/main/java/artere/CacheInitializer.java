@@ -19,15 +19,17 @@ public class CacheInitializer {
     @Inject
     private CacheService cacheService;
 
+    @Inject
     @ConfigProperty(name = "cache.load.initial.data", defaultValue = "false")
-    private Boolean initializeData = Boolean.FALSE;
+    private Boolean initializeData;
 
     @PersistenceContext(unitName = "cachePU")
     private EntityManager em;
 
     @PostConstruct
     public void init() {
-        if (initializeData) {
+        if (initializeData != null && initializeData ) {
+
             Person person1 = new Person("Souheib", "BOUSALEM");
             Person person2 = new Person("Aryem", "BOUSALEM");
 

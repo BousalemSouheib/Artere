@@ -1,7 +1,13 @@
 package artere;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Person {
+
+    @JsonProperty("firstname")
     private String firstname;
+
+    @JsonProperty("lastname")
     private String lastname;
 
 
