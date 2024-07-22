@@ -45,13 +45,13 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.10.2</version>
+            <version>5.7.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.7.2</version>
+            <version>5.7.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -69,7 +69,7 @@
     </dependencies>
 
     <build>
-<!--        <finalName>cache-system</finalName>-->
+        <finalName>cache-system</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
